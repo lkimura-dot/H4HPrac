@@ -38,33 +38,33 @@ function TaskSidebar({ tasks, isLoading, onAddTask, onToggleTask, onDeleteTask, 
   }
 
   return (
-    <aside className="h-full rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-      <h2 className="text-lg font-semibold text-slate-900">To-Do List</h2>
+    <aside className="garden-card h-full p-4">
+      <h2 className="garden-panel-title text-3xl font-bold">to-do list</h2>
 
       <form className="mt-4 flex gap-2" onSubmit={handleCreateTask}>
         <input
-          className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+          className="garden-input px-3 py-2 text-sm"
           placeholder="Add a task..."
           value={newTitle}
           onChange={(event) => setNewTitle(event.target.value)}
         />
         <button
-          className="rounded-xl bg-sky-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-sky-700"
+          className="garden-btn-secondary px-3 py-2 text-sm"
           type="submit"
         >
           Add
         </button>
       </form>
 
-      {isLoading ? <p className="mt-4 text-sm text-slate-500">Loading tasks...</p> : null}
+      {isLoading ? <p className="mt-4 text-sm text-[var(--garden-muted)]">Loading tasks...</p> : null}
       {!isLoading && sortedTasks.length === 0 ? (
-        <p className="mt-4 text-sm text-slate-500">No tasks yet. Add your first one.</p>
+        <p className="mt-4 text-sm text-[var(--garden-muted)]">No tasks yet. Add your first one.</p>
       ) : null}
 
       <ul className="mt-4 space-y-2">
         {sortedTasks.map((task) => (
           <li
-            className="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-sm"
+            className="rounded-2xl border border-[#d7cab8] bg-[#f8f3ec] p-3 text-sm"
             key={task.id}
           >
             <div className="flex items-start gap-2">
@@ -79,20 +79,20 @@ function TaskSidebar({ tasks, isLoading, onAddTask, onToggleTask, onDeleteTask, 
                 {editingTaskId === task.id ? (
                   <div className="space-y-2">
                     <input
-                      className="w-full rounded-lg border border-slate-300 px-2 py-1 text-sm outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+                      className="garden-input px-2 py-1 text-sm"
                       value={editingTitle}
                       onChange={(event) => setEditingTitle(event.target.value)}
                     />
                     <div className="flex gap-2">
                       <button
-                        className="rounded-lg bg-emerald-600 px-2 py-1 text-xs font-medium text-white hover:bg-emerald-700"
+                        className="garden-btn-secondary px-2 py-1 text-xs"
                         onClick={saveTaskTitle}
                         type="button"
                       >
                         Save
                       </button>
                       <button
-                        className="rounded-lg bg-slate-300 px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-400"
+                        className="rounded-lg bg-[#c4bbaf] px-2 py-1 text-xs font-bold text-[#5f5547] hover:bg-[#b5ab9e]"
                         onClick={cancelEditing}
                         type="button"
                       >
@@ -103,7 +103,7 @@ function TaskSidebar({ tasks, isLoading, onAddTask, onToggleTask, onDeleteTask, 
                 ) : (
                   <button
                     className={`w-full text-left ${
-                      task.completed ? 'text-slate-400 line-through' : 'text-slate-800'
+                      task.completed ? 'text-[#a69a8d] line-through' : 'text-[#5f5547]'
                     }`}
                     onClick={() => beginEditing(task)}
                     type="button"
@@ -115,7 +115,7 @@ function TaskSidebar({ tasks, isLoading, onAddTask, onToggleTask, onDeleteTask, 
             </div>
             <div className="mt-2 flex justify-end">
               <button
-                className="text-xs font-medium text-rose-600 hover:text-rose-700"
+                className="text-xs font-bold text-rose-600 hover:text-rose-700"
                 onClick={() => onDeleteTask(task.id)}
                 type="button"
               >

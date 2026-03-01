@@ -273,8 +273,8 @@ function App() {
 
   if (missingFirebaseConfig.length > 0) {
     return (
-      <main className="mx-auto flex min-h-screen max-w-3xl items-center px-4 py-10">
-        <div className="w-full rounded-3xl border border-amber-300 bg-amber-50 p-6 text-amber-900 shadow-sm">
+      <main className="mind-garden-dashboard mx-auto flex min-h-screen max-w-3xl items-center px-4 py-10">
+        <div className="garden-card w-full p-6 text-amber-900">
           <h1 className="text-xl font-semibold">Firebase config missing</h1>
           <p className="mt-2 text-sm">
             Create a <code>.env</code> file using <code>.env.example</code> and add your Firebase
@@ -292,44 +292,61 @@ function App() {
 
   if (isAuthLoading) {
     return (
-      <main className="flex min-h-screen items-center justify-center">
-        <p className="text-sm font-medium text-slate-600">Loading...</p>
+      <main className="mind-garden-auth-screen">
+        <div className="mind-garden-cloud mind-garden-cloud-left" />
+        <div className="mind-garden-cloud mind-garden-cloud-right" />
+        <div className="mind-garden-grass" />
+        <div className="mind-garden-auth-content flex min-h-screen items-center justify-center px-4 py-10">
+          <p className="garden-title-font rounded-2xl bg-white/80 px-5 py-3 text-2xl font-semibold text-[#8f7654]">
+            loading...
+          </p>
+        </div>
       </main>
     )
   }
 
   if (!currentUser) {
     return (
-      <main className="flex min-h-screen items-center justify-center px-4 py-10">
-        <AuthForm
-          onSignIn={handleSignIn}
-          onSignUp={handleSignUp}
-          isSubmitting={isAuthSubmitting}
-          errorMessage={authError}
-        />
+      <main className="mind-garden-auth-screen">
+        <div className="mind-garden-cloud mind-garden-cloud-left" />
+        <div className="mind-garden-cloud mind-garden-cloud-right" />
+        <div className="mind-garden-grass" />
+
+        <div className="mind-garden-auth-content flex min-h-screen items-center justify-center px-4 py-10">
+          <AuthForm
+            onSignIn={handleSignIn}
+            onSignUp={handleSignUp}
+            isSubmitting={isAuthSubmitting}
+            errorMessage={authError}
+          />
+        </div>
       </main>
     )
   }
 
   return (
-    <main className="min-h-screen px-4 py-6 sm:px-6 lg:px-8">
+    <main className="mind-garden-dashboard px-4 py-6 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <header className="mb-4 flex flex-col gap-4 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+        <header className="garden-card mb-4 flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm font-medium uppercase tracking-wide text-sky-700">BloomFocus</p>
-            <h1 className="text-2xl font-bold text-slate-900">Gamified Study Dashboard</h1>
+            <p className="garden-title-font text-base font-semibold uppercase tracking-wide text-[#8f7654]">
+              BloomFocus
+            </p>
+            <h1 className="garden-title-font text-4xl leading-none font-bold text-[var(--garden-heading)]">
+              mind garden
+            </h1>
           </div>
           <button
-            className="rounded-xl bg-slate-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800"
+            className="garden-btn-primary px-4 py-2 text-sm"
             onClick={handleLogOut}
             type="button"
           >
-            Log Out
+            log out
           </button>
         </header>
 
         {appError ? (
-          <p className="mb-4 rounded-xl border border-rose-200 bg-rose-50 px-4 py-2 text-sm text-rose-700">
+          <p className="mb-4 rounded-xl border border-rose-300 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700">
             {appError}
           </p>
         ) : null}

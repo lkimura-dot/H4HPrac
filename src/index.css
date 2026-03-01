@@ -1,14 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@400;500;700;800&display=swap");
 @import "tailwindcss";
 
 body {
   margin: 0;
   min-height: 100vh;
   min-width: 320px;
-  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(180deg, #f0f9ff 0%, #f8fafc 100%);
-  color: #0f172a;
+  font-family: "Nunito", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #b6e8f1;
+  color: #5e554b;
 }
 
 #root {
   min-height: 100vh;
+}
+
+:root {
+  --garden-sky: #b6e8f1;
+  --garden-grass: #c0dd79;
+  --garden-card: #f4f1ee;
+  --garden-outline: #cdb48d;
+  --garden-text: #5e554b;
+  --garden-muted: #8f8274;
+  --garden-heading: #d2b488;
+  --garden-btn: #d7bb90;
+  --garden-btn-hover: #cdaa7a;
+  --garden-link: #799750;
+}
+
+.garden-title-font {
+  font-family: "Baloo 2", "Nunito", cursive;
+}
+
+.garden-card {
+  border: 2px solid var(--garden-outline);
+  background: color-mix(in srgb, var(--garden-card) 94%, white 6%);
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 26px rgba(81, 67, 47, 0.12);
+}
+
+.garden-panel-title {
+  font-family: "Baloo 2", "Nunito", cursive;
+  color: #8f7654;
+  letter-spacing: 0.02em;
+}
+
+.garden-input {
+  width: 100%;
+  border-radius: 0.85rem;
+  border: 2px solid var(--garden-outline);
+  background: #f8f6f3;
+  color: var(--garden-text);
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.garden-input:focus {
+  border-color: #b89b6f;
+  box-shadow: 0 0 0 3px rgba(205, 180, 141, 0.24);
+}
+
+.garden-btn-primary {
+  border-radius: 0.85rem;
+  border: 0;
+  background: var(--garden-btn);
+  color: #fff8ef;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: background 120ms ease;
+}
+
+.garden-btn-primary:hover {
+  background: var(--garden-btn-hover);
+}
+
+.garden-btn-secondary {
+  border-radius: 0.7rem;
+  border: 0;
+  background: #8ba55f;
+  color: #fdfcfb;
+  font-weight: 700;
+  transition: background 120ms ease;
+}
+
+.garden-btn-secondary:hover {
+  background: #758f4d;
+}
+
+.garden-text-link {
+  color: var(--garden-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 800;
+}
+
+.mind-garden-auth-screen {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--garden-sky);
+}
+
+.mind-garden-grass {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 39vh;
+  background: var(--garden-grass);
+  border-top: 6px solid #a9ca61;
+  z-index: 1;
+}
+
+.mind-garden-cloud {
+  position: absolute;
+  background: #f2eeeb;
+  border: 5px solid #b8b0a9;
+  border-radius: 999px;
+  z-index: 1;
+}
+
+.mind-garden-cloud::before,
+.mind-garden-cloud::after {
+  content: "";
+  position: absolute;
+  background: #f2eeeb;
+  border: 5px solid #b8b0a9;
+  border-radius: 999px;
+}
+
+.mind-garden-cloud-left {
+  width: min(50vw, 520px);
+  height: 280px;
+  left: -110px;
+  top: 38px;
+}
+
+.mind-garden-cloud-left::before {
+  width: 210px;
+  height: 170px;
+  right: 30px;
+  bottom: -38px;
+}
+
+.mind-garden-cloud-left::after {
+  width: 170px;
+  height: 150px;
+  left: 52px;
+  top: -62px;
+}
+
+.mind-garden-cloud-right {
+  width: min(58vw, 620px);
+  height: 300px;
+  right: -140px;
+  top: 60px;
+}
+
+.mind-garden-cloud-right::before {
+  width: 260px;
+  height: 190px;
+  left: 90px;
+  top: -74px;
+}
+
+.mind-garden-cloud-right::after {
+  width: 220px;
+  height: 170px;
+  left: 18px;
+  bottom: -52px;
+}
+
+.mind-garden-auth-content {
+  position: relative;
+  z-index: 2;
+}
+
+.mind-garden-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ccf0f6 0%, #d8f3d8 100%);
 }

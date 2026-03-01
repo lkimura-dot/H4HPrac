@@ -24,24 +24,25 @@ function AuthForm({ onSignIn, onSignUp, isSubmitting, errorMessage }) {
     }
   }
 
-  const submitLabel = mode === 'signin' ? 'Sign In' : 'Create Account'
+  const submitLabel = mode === 'signin' ? 'log in' : 'sign up'
   const toggleLabel =
     mode === 'signin'
-      ? "Don't have an account? Create one"
-      : 'Already have an account? Sign in'
+      ? 'create account'
+      : 'back to login'
 
   return (
-    <div className="mx-auto w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-      <h1 className="text-center text-2xl font-semibold text-slate-900">BloomFocus</h1>
-      <p className="mt-2 text-center text-sm text-slate-600">
-        Study, earn points, and grow your garden.
-      </p>
+    <div className="garden-card mx-auto w-full max-w-md p-8 sm:max-w-lg sm:p-9">
+      <h1 className="garden-title-font text-center text-5xl font-bold text-[var(--garden-heading)]">
+        mind garden
+      </h1>
 
-      <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-        <label className="block text-sm font-medium text-slate-700" htmlFor="email">
-          Email
+      <form className="mt-7 space-y-5" onSubmit={handleSubmit}>
+        <label className="block text-3xl" htmlFor="email">
+          <span className="garden-title-font text-3xl font-semibold text-[var(--garden-heading)]">
+            email
+          </span>
           <input
-            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+            className="garden-input mt-1.5 px-4 py-2.5 text-lg"
             id="email"
             name="email"
             type="email"
@@ -52,10 +53,12 @@ function AuthForm({ onSignIn, onSignUp, isSubmitting, errorMessage }) {
           />
         </label>
 
-        <label className="block text-sm font-medium text-slate-700" htmlFor="password">
-          Password
+        <label className="block text-3xl" htmlFor="password">
+          <span className="garden-title-font text-3xl font-semibold text-[var(--garden-heading)]">
+            password
+          </span>
           <input
-            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+            className="garden-input mt-1.5 px-4 py-2.5 text-lg"
             id="password"
             name="password"
             type="password"
@@ -68,27 +71,29 @@ function AuthForm({ onSignIn, onSignUp, isSubmitting, errorMessage }) {
         </label>
 
         {errorMessage ? (
-          <p className="rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-600">
+          <p className="rounded-xl border border-rose-300 bg-rose-50 px-3 py-2 text-sm font-semibold text-rose-700">
             {errorMessage}
           </p>
         ) : null}
 
-        <button
-          className="w-full rounded-xl bg-sky-600 px-4 py-2.5 font-medium text-white transition hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-slate-400"
-          type="submit"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'Please wait...' : submitLabel}
-        </button>
-      </form>
+        <div className="flex items-center justify-between gap-3 pt-1">
+          <button
+            className="garden-text-link garden-title-font text-2xl leading-none"
+            type="button"
+            onClick={() => setMode((previous) => (previous === 'signin' ? 'signup' : 'signin'))}
+          >
+            {toggleLabel}
+          </button>
 
-      <button
-        className="mt-4 w-full text-sm font-medium text-sky-700 transition hover:text-sky-800"
-        type="button"
-        onClick={() => setMode((previous) => (previous === 'signin' ? 'signup' : 'signin'))}
-      >
-        {toggleLabel}
-      </button>
+          <button
+            className="garden-btn-primary garden-title-font min-w-[130px] px-6 py-2.5 text-3xl leading-none disabled:cursor-not-allowed disabled:bg-[#c6b39a]"
+            type="submit"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'wait...' : submitLabel}
+          </button>
+        </div>
+      </form>
     </div>
   )
 }
